@@ -5,9 +5,24 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+public class Database extends Element{
   
   private Path file = Paths.get("tododatabase.txt");
+  private List<String> dataList;
+  List<Element> elementList;
+  
+  Database(){
+    try {
+      this.dataList = new ArrayList<String>(Files.readAllLines(file));
+      this.elementList = new ArrayList<>();
+      for (int index = 0; index < dataList.size(); index++) {
+        Element task = new Element();
+        elementList.add(task);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
   
   public List<String> getDatabaseArray() {
     try {

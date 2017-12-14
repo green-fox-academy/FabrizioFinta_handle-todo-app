@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Database {
   
-  Path database = Paths.get("tododatabase.txt");
+  private Path file = Paths.get("tododatabase.txt");
   
   public List<String> getDatabaseArray() {
     try {
-      List<String> dataArray = new ArrayList<String>(Files.readAllLines(database));
+      List<String> dataArray = new ArrayList<String>(Files.readAllLines(file));
       for (String data : dataArray) ;
       return dataArray;
     } catch (IOException e) {
@@ -22,7 +22,7 @@ public class Database {
   
   public void modifyDatabase(ArrayList freshData) {
     try {
-      Files.write(database, freshData);
+      Files.write(file, freshData);
     } catch (IOException e) {
       e.printStackTrace();
     }

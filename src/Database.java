@@ -5,19 +5,22 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database extends Element{
+public class Database {
   
-  private Path file = Paths.get("tododatabase.txt");
+  private Path file = Paths.get("Database.txt");
   private List<String> dataList;
-  List<Element> elementList;
+  private List<Element> getElementList;
   
   Database(){
     try {
       this.dataList = new ArrayList<String>(Files.readAllLines(file));
-      this.elementList = new ArrayList<>();
+      this.getElementList = new ArrayList<>();
       for (int index = 0; index < dataList.size(); index++) {
-        Element task = new Element();
-        elementList.add(task);
+        Element task = new Element(dataList.get(index));
+        if (dataList.get(index).startsWith("x")){
+          task.setDone();
+        }
+        getElementList.add(task);
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -41,5 +44,9 @@ public class Database extends Element{
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+  
+  public List<Element> getElementList(){
+    return this.getElementList;
   }
 }

@@ -11,13 +11,8 @@ public class Element {
     this.isDone = false;
   }
   
-  Element (){
-    this.name = name.substring(1);
-    this.isDone = false;
-  }
-  
   void editName(String text){
-    this.name += text;
+    this.name = text + this.name.substring(1);
   }
   
   boolean getIsDone(){
@@ -27,4 +22,8 @@ public class Element {
     this.isDone = true;
   }
   
+  @Override
+  public String toString() {
+    return name;
+  }
 }

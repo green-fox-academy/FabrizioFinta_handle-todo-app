@@ -1,25 +1,30 @@
 public class TodoOp extends  Database{
   
   Element getElement(int index){
-    return super.elementList.get(index);
+    return super.getElementList().get(index);
   }
   void setElement(String text){
     Element element = new Element(text);
   }
   
   void addOrder(){
-    for (int index = 0; index < super.elementList.size(); index++) {
-      super.elementList.get(index).editName(index+1 + " - ");
+    for (int index = 0; index < super.getElementList().size(); index++) {
+      super.getElementList().get(index).editName(index+1 + " - ");
     }
   }
   void addStatus(){
-    for (int index = 0; index < super.elementList.size(); index++) {
-      if (super.elementList.get(index).getIsDone()) {
-        super.elementList.get(index).editName(index + 1 + " - " + " [x] ");
+    for (int index = 0; index < super.getElementList().size(); index++) {
+      if (super.getElementList().get(index).getIsDone()) {
+        super.getElementList().get(index).editName(index + 1 + " - " + " [x] ");
       } else {
-        super.elementList.get(index).editName(index + 1 + " - " + " [ ] ");
+        super.getElementList().get(index).editName(index + 1 + " - " + " [ ] ");
       }
-      
+    }
+  }
+  
+  void printList(){
+    for (int index = 0; index < super.getElementList().size(); index++) {
+      System.out.println(super.getElementList().get(index));
     }
   }
   

@@ -10,12 +10,6 @@ public class Main {
                                  " -a   Adds a new task\n" +
                                  " -r   Removes an task\n" +
                                  " -c   Completes an task");
-    } else if ((todo.getElementList().size() == 0)) {
-       System.out.println("No todos for today! :)\n" +
-                          "Add some with '-a' command!");
-    } else if (args[0].contains("-l")) {
-        todo.addOrder();
-        todo.printList();
     } else if ((args[0].contains("-a"))){
         if (args.length == 2) {
         todo.addTodo(args[1]);
@@ -26,6 +20,12 @@ public class Main {
         } else {
           System.err.println("Unable to add: no task provided");
         }
+    } else if ((todo.getElementList().size() == 0)) {
+      System.out.println("No todos for today! :)\n" +
+                                 "Add some with '-a' command!");
+    } else if (args[0].contains("-l")) {
+      todo.addOrder();
+      todo.printList();
     } else if (args[0].contains("-r")){
       if (args[0].contains("-r") && !(args.length==1)) {
         try {

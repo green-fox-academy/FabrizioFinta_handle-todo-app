@@ -29,7 +29,7 @@ public class Main {
         }
     } else if (args[0].contains("-r")){
       try {
-        int index = Integer.parseInt(args[1]);
+        int index = Integer.parseInt(args[1])-1;
         todo.removeTodo(index);
       } catch (NumberFormatException e) {
         System.err.println("Unable to remove: index is not a number");
@@ -38,13 +38,12 @@ public class Main {
       }
     } else if (args.length == 2 && args[0].contains("-c")){
       try {
-        int index = Integer.parseInt(args[1]);
+        int index = Integer.parseInt(args[1])-1;
         todo.addStatus();
-        todo.getElement(index);
+        System.out.println(todo.getElement(index));
       } catch (IndexOutOfBoundsException e) {
         System.out.println("Unable to check: index is out of bound");
       }
-      //TODO shows a todo at the args[1] index
       //TODO if it is nothing there trhows: Unable to check: index is out of bound
       //TODO if there is nothing at args[1] throws: Unable to check: no index provided
       //TODO if there is a string or anything instead of number than throws: Unable to check: index is not a number

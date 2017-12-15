@@ -34,7 +34,7 @@ public class TodoOp extends  Database{
     refreshDatabase();
   }
   void removeTodo(int index){
-    getElementList().remove(index-1);
+    getElementList().remove(index);
     refreshDatabase();
   }
 }

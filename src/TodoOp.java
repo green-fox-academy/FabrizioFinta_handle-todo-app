@@ -5,6 +5,7 @@ public class TodoOp extends  Database{
   }
   void setElement(String text){
     Element element = new Element(text);
+    getElementList().add(element);
   }
   
   void addOrder(){
@@ -29,9 +30,11 @@ public class TodoOp extends  Database{
   }
   
   void addTodo(String name) {
-    Element todo = new Element(name);
-    getElementList().add(todo);
+    setElement(name);
     refreshDatabase();
   }
-  
+  void removeTodo(int index){
+    getElementList().remove(index-1);
+    refreshDatabase();
+  }
 }

@@ -28,10 +28,22 @@ public class Main {
           System.err.println("Unable to add: no task provided");
         }
     } else if (args[0].contains("-r")){
-      //TODO remove elements -r index
-      //TODO index > elements.size throw: Unable to remove: index is out of bound
-      //TODO index = String || index != int : Unable to remove: index is not a number
+      try {
+        int index = Integer.parseInt(args[1]);
+        todo.removeTodo(index);
+      } catch (NumberFormatException e) {
+        System.err.println("Unable to remove: index is not a number");
+      } catch (IndexOutOfBoundsException e) {
+        System.err.println("Unable to remove: index is out of bound");
+      }
     } else if (args.length == 2 && args[0].contains("-c")){
+      try {
+        int index = Integer.parseInt(args[1]);
+        todo.addStatus();
+        todo.getElement(index);
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Unable to check: index is out of bound");
+      }
       //TODO shows a todo at the args[1] index
       //TODO if it is nothing there trhows: Unable to check: index is out of bound
       //TODO if there is nothing at args[1] throws: Unable to check: no index provided

@@ -2,5 +2,4 @@
 !Do hard reset on github and lose all the files
 !Have lunch
 !Redo all my files
-Die
 One more task

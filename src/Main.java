@@ -16,6 +16,7 @@ public class Main {
           System.out.println("Task \"" + args[1] + "\" succesfully added!");
         } else if (args.length > 2){
           System.err.println("Unable to add: syntax error.");
+          System.err.println("You can just add one task at a time.");
           System.out.println("Hint: Did you put your \"task\" in quotation marks?");
         } else {
           System.err.println("Unable to add: no task provided");

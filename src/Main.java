@@ -27,13 +27,17 @@ public class Main {
           System.err.println("Unable to add: no task provided");
         }
     } else if (args[0].contains("-r")){
-      try {
+      if (args[0].contains("-r") && !(args.length==1)) {
+        try {
           int index = Integer.parseInt(args[1]) - 1;
           todo.removeTodo(index);
-      } catch (NumberFormatException e) {
-        System.err.println("Unable to remove: index is not a number");
-      } catch (IndexOutOfBoundsException e) {
-        System.err.println("Unable to remove: index is out of bound");
+        } catch (NumberFormatException e) {
+          System.err.println("Unable to remove: index is not a number");
+        } catch (IndexOutOfBoundsException e) {
+          System.err.println("Unable to remove: index is out of bound");
+        }
+      } else {
+        System.err.println("Please give the index of the task which you would like to remove!");
       }
     } else if (args.length == 2 && args[0].contains("-c")){
       try {

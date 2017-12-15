@@ -29,6 +29,11 @@ public class TodoOp extends  Database{
     }
   }
   
+  void setDone(int index){
+    getElement(index).setDone();
+    refreshDatabase();
+  }
+  
   void addTodo(String name) {
     setElement(name);
     refreshDatabase();

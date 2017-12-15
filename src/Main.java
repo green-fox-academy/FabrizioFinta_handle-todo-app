@@ -19,7 +19,7 @@ public class Main {
     } else if ((args[0].contains("-a"))){
         if (args.length == 2) {
         todo.addTodo(args[1]);
-          System.out.println("Task " + args[1] + " succesfully added!");
+          System.out.println("Task \"" + args[1] + "\" succesfully added!");
         } else if (args.length > 2){
           System.err.println("Unable to add: syntax error.");
           System.out.println("Hint: Did you put your \"task\" in quotation marks?");
@@ -28,12 +28,8 @@ public class Main {
         }
     } else if (args[0].contains("-r")){
       try {
-        if (todo.getElementList().size()!=0) {
           int index = Integer.parseInt(args[1]) - 1;
           todo.removeTodo(index);
-        } else {
-          System.out.println("You do not have any todos to remove! Add some with -a");
-        }
       } catch (NumberFormatException e) {
         System.err.println("Unable to remove: index is not a number");
       } catch (IndexOutOfBoundsException e) {
@@ -42,6 +38,7 @@ public class Main {
     } else if (args.length == 2 && args[0].contains("-c")){
       try {
           int index = Integer.parseInt(args[1]) - 1;
+          todo.setDone(index);
           todo.addStatus();
           System.out.println(todo.getElement(index));
       } catch (IndexOutOfBoundsException e) {

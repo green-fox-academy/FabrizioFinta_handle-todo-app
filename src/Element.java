@@ -1,12 +1,12 @@
+import java.awt.dnd.InvalidDnDOperationException;
 import java.util.List;
 
 public class Element {
   
   private String name;
   private boolean isDone;
-  private List<Element> elementList;
   
-  Element (String name){
+  Element(String name) {
     this.name = name;
     if (name.startsWith("!")) {
       this.isDone = true;
@@ -15,19 +15,23 @@ public class Element {
     }
   }
   
-  void editName(String text){
-    if(this.name.startsWith("!")) {
+  void editName(String text) {
+    if (this.name.startsWith("!")) {
       this.name = text + this.name.substring(1);
     } else {
       this.name = text + this.name;
     }
   }
   
-  boolean getIsDone(){
+  boolean getIsDone() {
     return this.isDone;
   }
-  void setDone(){
-    this.isDone = true;
+  
+  void setDone() {
+    if (!(this.name.startsWith("!"))) {
+      this.name = "!" + this.name;
+      this.isDone = true;
+    }
   }
   
   @Override

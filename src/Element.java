@@ -8,7 +8,11 @@ public class Element {
   
   Element (String name){
     this.name = name;
-    this.isDone = false;
+    if (name.startsWith("!")) {
+      this.isDone = true;
+    } else {
+      this.isDone = false;
+    }
   }
   
   void editName(String text){

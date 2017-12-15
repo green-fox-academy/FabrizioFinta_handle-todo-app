@@ -17,9 +17,6 @@ public class Database {
       this.getElementList = new ArrayList<>();
       for (int index = 0; index < dataList.size(); index++) {
         Element task = new Element(dataList.get(index));
-        if (dataList.get(index).startsWith("x")){
-          task.setDone();
-        }
         getElementList.add(task);
       }
     } catch (IOException e) {
@@ -30,7 +27,6 @@ public class Database {
   public List<String> getDatabaseArray() {
     try {
       List<String> dataArray = new ArrayList<String>(Files.readAllLines(file));
-      for (String data : dataArray) ;
       return dataArray;
     } catch (IOException e) {
       e.printStackTrace();
@@ -38,9 +34,13 @@ public class Database {
     }
   }
   
-  public void modifyDatabase(ArrayList freshData) {
+  public void refreshDatabase() {
+    List<String> tempList = new ArrayList<>();
+    for (int index = 0; index < getElementList().size(); index++) {
+      tempList.add(getElementList().get(index).toString());
+    }
     try {
-      Files.write(file, freshData);
+      Files.write(file, tempList);
     } catch (IOException e) {
       e.printStackTrace();
     }

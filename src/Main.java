@@ -18,8 +18,15 @@ public class Main {
         System.out.println("No todos for today! :)");
       }
     } else if ((args[0].contains("-a"))){
-      //TODO add elements to the element list -a "Feed the monkey"
-      //TODO when after -a there is no string or the value is not string must trhow: Unable to add: no task provided
+        if (args.length == 2) {
+        todo.addTodo(args[1]);
+          System.out.println("Task " + args[1] + " succesfully added!");
+        } else if (args.length > 2){
+          System.err.println("Unable to add: syntax error.");
+          System.out.println("Hint: Did you put your \"task\" in quotation marks?");
+        } else {
+          System.err.println("Unable to add: no task provided");
+        }
     } else if (args[0].contains("-r")){
       //TODO remove elements -r index
       //TODO index > elements.size throw: Unable to remove: index is out of bound

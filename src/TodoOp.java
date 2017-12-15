@@ -28,4 +28,10 @@ public class TodoOp extends  Database{
     }
   }
   
+  void addTodo(String name) {
+    Element todo = new Element(name);
+    getElementList().add(todo);
+    refreshDatabase();
+  }
+  
 }

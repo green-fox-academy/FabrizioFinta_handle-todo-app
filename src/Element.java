@@ -16,7 +16,11 @@ public class Element {
   }
   
   void editName(String text){
-    this.name = text + this.name.substring(1);
+    if(this.name.startsWith("!")) {
+      this.name = text + this.name.substring(1);
+    } else {
+      this.name = text + this.name;
+    }
   }
   
   boolean getIsDone(){
